@@ -26,4 +26,8 @@ class PulseWidth
 
         void saveWidth(uint32_t width);
 };
+
+void ISR_PWM_MEASURE_X();
+void ISR_PWM_MEASURE_Y();
+
 #endif
