@@ -1,6 +1,6 @@
 #include "Camera.h"
 #include "Arduino.h"
-#include "PulseWidth.h"
+#include "PWMSample.h"
 
 extern uint8_t PWM_PIN_INPUT_X;
 extern uint8_t PWM_PIN_INPUT_Y;
@@ -12,8 +12,8 @@ const int PWM_CENTER = 1450;
 const int PWM_CENTER_BOUNDARY_MIN = PWM_CENTER - PWM_DELTA;
 const int PWM_CENTER_BOUNDARY_MAX = PWM_CENTER + PWM_DELTA;
 
-PulseWidth pwX = PulseWidth(PWM_PIN_INPUT_X, PWM_CENTER);
-PulseWidth pwY = PulseWidth(PWM_PIN_INPUT_Y, PWM_CENTER);
+PWMSample pX = PWMSample(PWM_PIN_INPUT_X, PWM_CENTER);
+PWMSample pY = PWMSample(PWM_PIN_INPUT_Y, PWM_CENTER);
 
 /**
  * Camera controls the camera movements based on the PWM signals from the RC
@@ -28,8 +28,8 @@ Camera::Camera() {}
  * Set up Camera
  */
 void Camera::setup() {
-    attachInterrupt(pwX.getInterrupt(), ISR_PWM_MEASURE_X, CHANGE);
-    attachInterrupt(pwY.getInterrupt(), ISR_PWM_MEASURE_Y, CHANGE);
+    attachInterrupt(pX.getInterrupt(), ISR_PWM_SAMPLE_X, CHANGE);
+    attachInterrupt(pY.getInterrupt(), ISR_PWM_SAMPLE_Y, CHANGE);
 }
 
 /**
@@ -42,8 +42,8 @@ void Camera::readInput() {
     }
     this->lastRead = millis();
 
-    float px = pwX.getWidth();
-    float py = pwY.getWidth();
+    float px = pX.getWidth();
+    float py = pY.getWidth();
 
     // X axis movement
     if (px >= PWM_CENTER_BOUNDARY_MIN && px <= PWM_CENTER_BOUNDARY_MAX) {
@@ -119,13 +119,13 @@ void Camera::moveDown() {
 /**
  * ISR for when change on X axis is detected
  */
-void ISR_PWM_MEASURE_X() {
-    pwX.ISR_PWM_MEASURE();
+void ISR_PWM_SAMPLE_X() {
+    pX.ISR_PWM_SAMPLE();
 }
 
 /**
  * ISR for when change on Y axis is detected
  */
-void ISR_PWM_MEASURE_Y() {
-    pwY.ISR_PWM_MEASURE();
+void ISR_PWM_SAMPLE_Y() {
+    pY.ISR_PWM_SAMPLE();
 }

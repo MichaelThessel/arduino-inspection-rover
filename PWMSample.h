@@ -1,15 +1,15 @@
-#ifndef PulseWidth_h
-#define PulseWidth_h
+#ifndef PWMSample_h
+#define PWMSample_h
 
 #include "Arduino.h"
 
-class PulseWidth
+class PWMSample
 {
     public:
-        PulseWidth(uint8_t pin, uint32_t defaultValue);
+        PWMSample(uint8_t pin, uint32_t defaultValue);
         uint8_t getInterrupt();
         float getWidth();
-        void ISR_PWM_MEASURE();
+        void ISR_PWM_SAMPLE();
     private:
         uint8_t pin;
 
@@ -24,10 +24,10 @@ class PulseWidth
         volatile uint32_t startPulse = 0;
         volatile uint8_t previous = LOW;
 
-        void saveWidth(uint32_t width);
+        void setWidth(uint32_t width);
 };
 
-void ISR_PWM_MEASURE_X();
-void ISR_PWM_MEASURE_Y();
+void ISR_PWM_SAMPLE_X();
+void ISR_PWM_SAMPLE_Y();
 
 #endif

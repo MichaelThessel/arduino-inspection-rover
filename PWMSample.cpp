@@ -1,10 +1,10 @@
 #include "Arduino.h"
-#include "PulseWidth.h"
+#include "PWMSample.h"
 
 /**
  * This measures the current pulse width of PWM pulses for a given pin
  */
-PulseWidth::PulseWidth(uint8_t pin, uint32_t defaultValue) {
+PWMSample::PWMSample(uint8_t pin, uint32_t defaultValue) {
     this->pin = pin;
 
     // Initalize buffer
@@ -18,7 +18,7 @@ PulseWidth::PulseWidth(uint8_t pin, uint32_t defaultValue) {
 /**
  * Returns the interrupt corresponding to the configured pin
  */
-uint8_t PulseWidth::getInterrupt() {
+uint8_t PWMSample::getInterrupt() {
     return digitalPinToInterrupt(this->pin);
 }
 
@@ -27,15 +27,15 @@ uint8_t PulseWidth::getInterrupt() {
  *
  * in setup add for each pin to measure:
  *
- *      attachInterrupt(foo.getInterrupt(), ISR_PWM_MEASURE_FOO, CHANGE);
+ *      attachInterrupt(foo.getInterrupt(), ISR_PWM_SAMPLE_FOO, CHANGE);
  *
  *  and add an ISR like this for each pin to measure:
  *
- *      void ISR_PWM_MEASURE_FOO() {
- *          foo.ISR_PWM_MEASURE();
+ *      void ISR_PWM_SAMPLE_FOO() {
+ *          foo.ISR_PWM_SAMPLE();
  *      }
  */
-void PulseWidth::ISR_PWM_MEASURE() {
+void PWMSample::ISR_PWM_SAMPLE() {
     uint8_t state = digitalRead(this->pin);
     if (state == this->previous) {
         return;
@@ -45,14 +45,14 @@ void PulseWidth::ISR_PWM_MEASURE() {
     if (state == HIGH) {
         this->startPulse = micros();
     } else {
-        this->saveWidth((uint32_t)(micros() - this->startPulse));
+        this->setWidth((uint32_t)(micros() - this->startPulse));
     }
 }
 
 /**
  * Save last measurement
  */
-void PulseWidth::saveWidth(uint32_t width) {
+void PWMSample::setWidth(uint32_t width) {
     if (width < this->PWM_BOUNDARY_MIN || width > this->PWM_BOUNDARY_MAX) {
         return;
     }
@@ -66,7 +66,7 @@ void PulseWidth::saveWidth(uint32_t width) {
 /**
  * Returns current measurement
  */
-float PulseWidth::getWidth() {
+float PWMSample::getWidth() {
     uint32_t total = 0;
     for (uint8_t i = 0; i < this->BUFFER_SIZE; i++) {
         total += this->buffer[i];
