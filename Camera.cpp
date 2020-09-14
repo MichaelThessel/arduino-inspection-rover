@@ -1,6 +1,7 @@
 #include "Camera.h"
 #include "Arduino.h"
 #include "PWMSample.h"
+#include "PWMGenerate.h"
 
 extern uint8_t PWM_PIN_INPUT_X;
 extern uint8_t PWM_PIN_INPUT_Y;
@@ -12,8 +13,8 @@ const int PWM_CENTER = 1450;
 const int PWM_CENTER_BOUNDARY_MIN = PWM_CENTER - PWM_DELTA;
 const int PWM_CENTER_BOUNDARY_MAX = PWM_CENTER + PWM_DELTA;
 
-PWMSample pX = PWMSample(PWM_PIN_INPUT_X, PWM_CENTER);
-PWMSample pY = PWMSample(PWM_PIN_INPUT_Y, PWM_CENTER);
+PWMSample* ISRinputX;
+PWMSample* ISRinputY;
 
 /**
  * Camera controls the camera movements based on the PWM signals from the RC
@@ -28,8 +29,22 @@ Camera::Camera() {}
  * Set up Camera
  */
 void Camera::setup() {
-    attachInterrupt(pX.getInterrupt(), ISR_PWM_SAMPLE_X, CHANGE);
-    attachInterrupt(pY.getInterrupt(), ISR_PWM_SAMPLE_Y, CHANGE);
+    this->inputX = new PWMSample(PWM_PIN_INPUT_X, PWM_CENTER);
+    this->inputY = new PWMSample(PWM_PIN_INPUT_Y, PWM_CENTER);
+
+    // Make PWM sampler available to ISR(PCINTx_vect)
+    ISRinputX = this->inputX;
+    ISRinputY = this->inputY;
+
+    // Enable PIN change interrupts for pins for output PWM
+    PCMSK0 |= _BV(PCINT4); // X
+    PCMSK2 |= _BV(PCINT20); // Y
+
+    // Enable PIN change interrupts
+    PCICR = _BV(PCIE2) | _BV(PCIE0);
+
+    this->outputX = new PWMGenerate(PWM_PIN_OUTPUT_X);
+    this->outputY = new PWMGenerate(PWM_PIN_OUTPUT_Y);
 }
 
 /**
@@ -42,8 +57,8 @@ void Camera::readInput() {
     }
     this->lastRead = millis();
 
-    float px = pX.getWidth();
-    float py = pY.getWidth();
+    float px = this->inputX->getWidth();
+    float py = this->inputY->getWidth();
 
     // X axis movement
     if (px >= PWM_CENTER_BOUNDARY_MIN && px <= PWM_CENTER_BOUNDARY_MAX) {
@@ -73,7 +88,8 @@ void Camera::setPosition() {
     Serial.print(",");
     Serial.println(this->currentY);
 
-    // TODO set output PWM
+    this->outputX->setPosition(this->currentX);
+    this->outputY->setPosition(this->currentY);
 }
 
 /**
@@ -119,13 +135,13 @@ void Camera::moveDown() {
 /**
  * ISR for when change on X axis is detected
  */
-void ISR_PWM_SAMPLE_X() {
-    pX.ISR_PWM_SAMPLE();
+ISR(PCINT0_vect) {
+    ISRinputX->ISR_PWM_SAMPLE();
 }
 
 /**
  * ISR for when change on Y axis is detected
  */
-void ISR_PWM_SAMPLE_Y() {
-    pY.ISR_PWM_SAMPLE();
+ISR(PCINT2_vect) {
+    ISRinputY->ISR_PWM_SAMPLE();
 }

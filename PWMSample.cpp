@@ -7,6 +7,8 @@
 PWMSample::PWMSample(uint8_t pin, uint32_t defaultValue) {
     this->pin = pin;
 
+    pinMode(this->pin, INPUT);
+
     // Initalize buffer
     for (uint8_t i = 0; i < this->BUFFER_SIZE; i++) {
         this->buffer[i] = defaultValue;
@@ -16,24 +18,7 @@ PWMSample::PWMSample(uint8_t pin, uint32_t defaultValue) {
 }
 
 /**
- * Returns the interrupt corresponding to the configured pin
- */
-uint8_t PWMSample::getInterrupt() {
-    return digitalPinToInterrupt(this->pin);
-}
-
-/**
  * ISR to call when pin change interrupt is detected
- *
- * in setup add for each pin to measure:
- *
- *      attachInterrupt(foo.getInterrupt(), ISR_PWM_SAMPLE_FOO, CHANGE);
- *
- *  and add an ISR like this for each pin to measure:
- *
- *      void ISR_PWM_SAMPLE_FOO() {
- *          foo.ISR_PWM_SAMPLE();
- *      }
  */
 void PWMSample::ISR_PWM_SAMPLE() {
     uint8_t state = digitalRead(this->pin);
@@ -56,7 +41,7 @@ void PWMSample::setWidth(uint32_t width) {
     if (width < this->PWM_BOUNDARY_MIN || width > this->PWM_BOUNDARY_MAX) {
         return;
     }
-    this->buffer[bufferIndex] = width;
+    this->buffer[this->bufferIndex] = width;
     this->bufferIndex++;
     if (this->bufferIndex >= this->BUFFER_SIZE) {
         this->bufferIndex = 0;
