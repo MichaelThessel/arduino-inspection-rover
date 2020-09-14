@@ -8,11 +8,6 @@ extern uint8_t PWM_PIN_INPUT_Y;
 extern uint8_t PWM_PIN_OUTPUT_X;
 extern uint8_t PWM_PIN_OUTPUT_Y;
 
-const int PWM_DELTA = 100;
-const int PWM_CENTER = 1450;
-const int PWM_CENTER_BOUNDARY_MIN = PWM_CENTER - PWM_DELTA;
-const int PWM_CENTER_BOUNDARY_MAX = PWM_CENTER + PWM_DELTA;
-
 PWMSample* ISRinputX;
 PWMSample* ISRinputY;
 
@@ -29,8 +24,8 @@ Camera::Camera() {}
  * Set up Camera
  */
 void Camera::setup() {
-    this->inputX = new PWMSample(PWM_PIN_INPUT_X, PWM_CENTER);
-    this->inputY = new PWMSample(PWM_PIN_INPUT_Y, PWM_CENTER);
+    this->inputX = new PWMSample(PWM_PIN_INPUT_X, this->PWM_CENTER);
+    this->inputY = new PWMSample(PWM_PIN_INPUT_Y, this->PWM_CENTER);
 
     // Make PWM sampler available to ISR(PCINTx_vect)
     ISRinputX = this->inputX;
@@ -61,18 +56,18 @@ void Camera::readInput() {
     float py = this->inputY->getWidth();
 
     // X axis movement
-    if (px >= PWM_CENTER_BOUNDARY_MIN && px <= PWM_CENTER_BOUNDARY_MAX) {
-    } else if (px < PWM_CENTER_BOUNDARY_MIN) {
+    if (px >= this->PWM_CENTER_BOUNDARY_MIN && px <= this->PWM_CENTER_BOUNDARY_MAX) {
+    } else if (px < this->PWM_CENTER_BOUNDARY_MIN) {
         this->moveLeft();
-    } else if (px > PWM_CENTER_BOUNDARY_MAX) {
+    } else if (px > this->PWM_CENTER_BOUNDARY_MAX) {
         this->moveRight();
     }
 
     // Y axis movement
-    if (py >= PWM_CENTER_BOUNDARY_MIN && py <= PWM_CENTER_BOUNDARY_MAX) {
-    } else if (py < PWM_CENTER_BOUNDARY_MIN) {
+    if (py >= this->PWM_CENTER_BOUNDARY_MIN && py <= this->PWM_CENTER_BOUNDARY_MAX) {
+    } else if (py < this->PWM_CENTER_BOUNDARY_MIN) {
         this->moveUp();
-    } else if (py > PWM_CENTER_BOUNDARY_MAX) {
+    } else if (py > this->PWM_CENTER_BOUNDARY_MAX) {
         this->moveDown();
     }
 

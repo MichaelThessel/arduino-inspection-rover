@@ -13,6 +13,12 @@ class Camera
         void readInput();
 
     private:
+
+        const uint16_t PWM_DELTA = 100;
+        const uint16_t PWM_CENTER = 1450;
+        const uint16_t PWM_CENTER_BOUNDARY_MIN = Camera::PWM_CENTER - Camera::PWM_DELTA;
+        const uint16_t PWM_CENTER_BOUNDARY_MAX = Camera::PWM_CENTER + Camera::PWM_DELTA;
+
         const int8_t MAX_X = 6;
         const int8_t MIN_X = -6;
         const int8_t MAX_Y = 6;
