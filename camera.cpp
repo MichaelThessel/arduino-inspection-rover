@@ -56,6 +56,11 @@ void Camera::readInput() {
     float px = this->inputX->getWidth();
     float py = this->inputY->getWidth();
 
+    DPRINTF("Detected pulse width: ");
+    DPRINT(px);
+    DPRINTF(",");
+    DPRINTLN(py);
+
     // X axis movement
     if (px >= this->PWM_CENTER_BOUNDARY_MIN && px <= this->PWM_CENTER_BOUNDARY_MAX) {
     } else if (px < this->PWM_CENTER_BOUNDARY_MIN) {
@@ -76,10 +81,26 @@ void Camera::readInput() {
 }
 
 /**
+ * Update the sequence of most recent movements
+ */
+void Camera::updateSequence(char current) {
+    this->sequence[0] = this->sequence[1];
+    this->sequence[1] = this->sequence[2];
+    this->sequence[2] = this->sequence[3];
+    this->sequence[3] = current;
+}
+
+/**
  * Set pulse width on the output pins to move the camera to the current X and Y
  * position
  */
 void Camera::setPosition() {
+    if (strcmp(this->sequence, "lrlr") == 0) {
+        DPRINTLNF("Reset sequence detected resetting to origin");
+        this->reset();
+    }
+
+    DPRINTF("Setting position: ");
     DPRINT(this->currentX);
     DPRINTF(",");
     DPRINTLN(this->currentY);
@@ -92,6 +113,7 @@ void Camera::setPosition() {
  * Move camera right
  */
 void Camera::moveRight() {
+    this->updateSequence('r');
     this->currentX++;
     if (this->currentX > this->MAX_X) {
         this->currentX = MAX_X;
@@ -102,6 +124,7 @@ void Camera::moveRight() {
  * Move camera left
  */
 void Camera::moveLeft() {
+    this->updateSequence('l');
     this->currentX--;
     if (this->currentX < this->MIN_X) {
         this->currentX = MIN_X;
@@ -112,6 +135,7 @@ void Camera::moveLeft() {
  * Move camera up
  */
 void Camera::moveUp() {
+    this->updateSequence('u');
     this->currentY++;
     if (this->currentY > this->MAX_Y) {
         this->currentY = MAX_Y;
@@ -122,10 +146,20 @@ void Camera::moveUp() {
  * Move camera down
  */
 void Camera::moveDown() {
+    this->updateSequence('d');
     this->currentY--;
     if (this->currentY < this->MIN_Y) {
         this->currentY = MIN_Y;
     }
+}
+
+/**
+ * Reset camera to center position
+ */
+void Camera::reset() {
+    this->updateSequence('0');
+    this->currentX = 0;
+    this->currentY = 0;
 }
 
 /**

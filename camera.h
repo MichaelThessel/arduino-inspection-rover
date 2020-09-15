@@ -13,9 +13,8 @@ class Camera
         void readInput();
 
     private:
-
         const uint16_t PWM_DELTA = 100;
-        const uint16_t PWM_CENTER = 1450;
+        const uint16_t PWM_CENTER = 1500;
         const uint16_t PWM_CENTER_BOUNDARY_MIN = Camera::PWM_CENTER - Camera::PWM_DELTA;
         const uint16_t PWM_CENTER_BOUNDARY_MAX = Camera::PWM_CENTER + Camera::PWM_DELTA;
 
@@ -30,6 +29,8 @@ class Camera
         int8_t currentX = 0;
         int8_t currentY = 0;
 
+        char sequence[5] = "0000";
+
         PWMSample *inputX;
         PWMSample *inputY;
 
@@ -37,10 +38,12 @@ class Camera
         PWMGenerate *outputY;
 
         void setPosition();
+        void updateSequence(char current);
 
         void moveRight();
         void moveLeft();
         void moveUp();
         void moveDown();
+        void reset();
 };
 #endif
