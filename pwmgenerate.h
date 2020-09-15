@@ -10,7 +10,7 @@ class PWMGenerate
 {
     public:
         PWMGenerate(uint8_t pin);
-        void PWMGenerate::setPosition(int position);
+        void setPosition(int position);
     private:
         const uint8_t PIN_OUTPUT_TIMER_1 = PWM_PIN_OUTPUT_Y;
         const uint8_t PIN_OUTPUT_TIMER_2 = PWM_PIN_OUTPUT_X;
@@ -30,9 +30,9 @@ class PWMGenerate
 
         uint8_t compare = PWMGenerate::DEFAULT_COMPARE;
 
-        void PWMGenerate::initTimer1();
-        void PWMGenerate::initTimer2();
-        void PWMGenerate::updateCompare();
+        void initTimer1();
+        void initTimer2();
+        void updateCompare();
 };
 
 #endif
