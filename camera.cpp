@@ -1,7 +1,8 @@
-#include "Camera.h"
 #include "Arduino.h"
-#include "PWMSample.h"
-#include "PWMGenerate.h"
+#include "debug.h"
+#include "camera.h"
+#include "pwmsample.h"
+#include "pwmsample.h"
 
 extern uint8_t PWM_PIN_INPUT_X;
 extern uint8_t PWM_PIN_INPUT_Y;
@@ -79,9 +80,9 @@ void Camera::readInput() {
  * position
  */
 void Camera::setPosition() {
-    Serial.print(this->currentX);
-    Serial.print(",");
-    Serial.println(this->currentY);
+    DPRINT(this->currentX);
+    DPRINTF(",");
+    DPRINTLN(this->currentY);
 
     this->outputX->setPosition(this->currentX);
     this->outputY->setPosition(this->currentY);

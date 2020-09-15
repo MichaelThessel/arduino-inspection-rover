@@ -1,5 +1,5 @@
-#ifndef PWMGenerate_h
-#define PWMGenerate_h
+#ifndef pwmgenerate_h
+#define pwmgenerate_h
 
 #include "Arduino.h"
 

@@ -1,5 +1,5 @@
 #include "Arduino.h"
-#include "PWMSample.h"
+#include "pwmsample.h"
 
 /**
  * This measures the current pulse width of PWM pulses for a given pin

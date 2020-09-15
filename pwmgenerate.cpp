@@ -1,5 +1,6 @@
 #include "Arduino.h"
-#include "PWMGenerate.h"
+#include "debug.h"
+#include "pwmgenerate.h"
 
 /**
  * Generates PWM signal for servo control
@@ -16,7 +17,7 @@ PWMGenerate::PWMGenerate(uint8_t pin) {
  * Initalizes Timer1. Used to generate the PWM signal to control the Y axis
  */
 void PWMGenerate::initTimer1() {
-    Serial.println("Initializing timer 1");
+    DPRINTLNF("Initializing timer 1");
 
     this->timer = this->TIMER_1;
 
@@ -38,7 +39,7 @@ void PWMGenerate::initTimer1() {
  * Initalizes Timer2. Used to generate the PWM signal to control the X axis
  */
 void PWMGenerate::initTimer2() {
-    Serial.println("Initializing timer 2");
+    DPRINTLNF("Initializing timer 2");
 
     this->timer = this->TIMER_2;
 

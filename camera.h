@@ -1,9 +1,9 @@
-#ifndef Camera_h
-#define Camera_h
+#ifndef camera_h
+#define camera_h
 
 #include "Arduino.h"
-#include "PWMGenerate.h"
-#include "PWMSample.h"
+#include "pwmgenerate.h"
+#include "pwmsample.h"
 
 class Camera
 {

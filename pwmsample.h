@@ -1,5 +1,5 @@
-#ifndef PWMSample_h
-#define PWMSample_h
+#ifndef pwmsample_h
+#define pwmsample_h
 
 #include "Arduino.h"
 
