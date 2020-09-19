@@ -13,7 +13,6 @@ $fn = 100;
 // Camera mount:
 // mount for lock
 // recess for servo arm
-// back cutout
 // top pin
 
 translate([-20, 0, 0]) rotate([0, 270, 0]) leftSupport();

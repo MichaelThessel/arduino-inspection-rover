@@ -6,6 +6,7 @@ module cameraMount() {
         cameraMountCase();
         cameraMountShutterCutout();
         cameraMountPowerCutout();
+        cameraMountBackCutout();
     }
 }
 
@@ -47,6 +48,20 @@ module cameraMountPowerCutout() {
         cameraMountThickness,
         cameraMountPowerCutoutHeight + 2 * cameraMountPowerCutoutGap,
         cameraMountPowerCutoutDepth + 2 * cameraMountPowerCutoutGap
+    ]);
+}
+
+// Cutout in the back for display
+module cameraMountBackCutout() {
+    translate([
+        cameraMountThickness + cameraMountBackCutoutOffset / 2,
+        cameraMountThickness + cameraMountBackCutoutOffset / 2,
+        0,
+    ])
+    #cube([
+        cameraMountGoproWidth - cameraMountBackCutoutOffset,
+        cameraMountGoproHeight - cameraMountBackCutoutOffset,
+        cameraMountThickness
     ]);
 }
 

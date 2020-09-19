@@ -28,3 +28,5 @@ cameraMountPowerCutoutHeight = 9;
 cameraMountPowerCutoutOffsetY = 9;
 cameraMountPowerCutoutOffsetZ = 7;
 cameraMountPowerCutoutGap = 5;
+
+cameraMountBackCutoutOffset = 8;
