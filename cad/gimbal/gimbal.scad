@@ -15,8 +15,22 @@ $fn = 100;
 // recess for servo arm
 // top pin
 
-translate([-20, 0, 0]) rotate([0, 270, 0]) leftSupport();
+supportCameraMountDistance = 40;
 
-translate([100, 0, 80]) rotate([0, 90, 0]) rightSupport();
+// Left support
+translate([-1 * supportCameraMountDistance, 0, 0])
+rotate([0, 270, 0])
+leftSupport();
 
-translate([0, 30, 20]) cameraMount();
+// Right support
+translate([supportCameraMountDistance + cameraMountWidth, 0, supportWidth])
+rotate([0, 90, 0])
+rightSupport();
+
+// Camera mount
+translate([
+    0,
+    supportHoleHeight - cameraMountHeight / 2,
+    supportWidth / 2 - cameraMountDepth / 2
+])
+cameraMount();
