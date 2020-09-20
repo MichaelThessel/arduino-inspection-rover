@@ -1,3 +1,8 @@
+// General
+DIFFERENCE_FIX = 0.1;
+DIFFERENCE_FIX_NEGATIVE = -1 * DIFFERENCE_FIX;
+DIFFERENCE_FIX_2 = 2 * DIFFERENCE_FIX;
+
 // Support
 supportThickness = 12;
 supportHoleHeight = 80;

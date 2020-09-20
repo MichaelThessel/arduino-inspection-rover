@@ -17,7 +17,7 @@ module cameraMountCase() {
         polygon(points = [[0, 0], [cameraMountWidth , 0], [cameraMountWidth, cameraMountHeight], [0, cameraMountHeight]]);
 
         translate([cameraMountThickness, cameraMountThickness, cameraMountThickness])
-        linear_extrude(height = cameraMountGoproDepth)
+        linear_extrude(height = cameraMountGoproDepth + DIFFERENCE_FIX)
         polygon(points = [[0, 0], [cameraMountGoproWidth , 0], [cameraMountGoproWidth, cameraMountGoproHeight], [0, cameraMountGoproHeight]]);
     }
 }
@@ -26,12 +26,12 @@ module cameraMountCase() {
 module cameraMountShutterCutout() {
     translate([
         cameraMountThickness + cameraMountShutterCutoutOffsetX - cameraMountShutterCutoutGap,
-        cameraMountHeight - cameraMountThickness,
+        cameraMountHeight - cameraMountThickness + DIFFERENCE_FIX_NEGATIVE,
         cameraMountThickness + cameraMountShutterCutoutOffsetZ - cameraMountShutterCutoutGap
     ])
     cube([
         cameraMountShutterCutoutWidth + 2 * cameraMountShutterCutoutGap,
-        cameraMountThickness,
+        cameraMountThickness + DIFFERENCE_FIX_2,
         cameraMountGoproDepth
 
     ]);
@@ -40,12 +40,12 @@ module cameraMountShutterCutout() {
 // Cutout for power button
 module cameraMountPowerCutout() {
     translate([
-        0,
+        DIFFERENCE_FIX_NEGATIVE,
         cameraMountPowerCutoutOffsetY + cameraMountThickness - cameraMountPowerCutoutGap,
         cameraMountPowerCutoutOffsetZ + cameraMountThickness - cameraMountPowerCutoutGap,
     ])
     cube([
-        cameraMountThickness,
+        cameraMountThickness + DIFFERENCE_FIX_2,
         cameraMountPowerCutoutHeight + 2 * cameraMountPowerCutoutGap,
         cameraMountPowerCutoutDepth + 2 * cameraMountPowerCutoutGap
     ]);
@@ -56,12 +56,12 @@ module cameraMountBackCutout() {
     translate([
         cameraMountThickness + cameraMountBackCutoutOffset / 2,
         cameraMountThickness + cameraMountBackCutoutOffset / 2,
-        0,
+        DIFFERENCE_FIX_NEGATIVE,
     ])
-    #cube([
+    cube([
         cameraMountGoproWidth - cameraMountBackCutoutOffset,
         cameraMountGoproHeight - cameraMountBackCutoutOffset,
-        cameraMountThickness
+        cameraMountThickness + DIFFERENCE_FIX_2
     ]);
 }
 
