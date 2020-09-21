@@ -7,10 +7,10 @@ componentThickness = 5;
 
 // Support
 supportThickness = 8;
-supportHoleHeight = 60;
-supportWidth = 80;
-supportTaper = 20;
-supportBaseDepth = 20;
+supportHoleHeight = 50;
+supportWidth = 50;
+supportTaper = 15;
+supportBaseDepth = 15;
 
 // Support right
 supportRightHoleRadius = 6;
