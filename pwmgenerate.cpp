@@ -6,33 +6,51 @@
  * Generates PWM signal for servo control
  */
 PWMGenerate::PWMGenerate(uint8_t pin) {
-    if (pin == this->PIN_OUTPUT_TIMER_1) {
-        this->initTimer1();
-    } else if (pin == this->PIN_OUTPUT_TIMER_2) {
-        this->initTimer2();
+    if (pin == this->PIN_OUTPUT_TIMER_1_1) {
+
+        // COM1A0 = 1; COM1A1 = 0 Toggle OC1A on Compare Match
+        // OC1A corresponds to pin 9
+        TCCR1A |= _BV(COM1A1);
+        OCR1A = this->compare;
+
+    } else if (pin == this->PIN_OUTPUT_TIMER_1_2) {
+
+        // COM1B0 = 1; COM1B1 = 0 Toggle OC1B on Compare Match
+        // OC1B corresponds to pin 10
+        TCCR1A |= _BV(COM1B1);
+        OCR1B = this->compare;
+
+    } else if (pin == this->PIN_OUTPUT_TIMER_2_1) {
+
+        // TODO
+
+    } else if (pin == this->PIN_OUTPUT_TIMER_2_2) {
+
+        // TODO
+
+    } else {
+        DPRINTLNF("Incorrect pin specified");
+        return;
     }
+
+    this->pin = pin;
+    pinMode(this->pin, OUTPUT);
 }
 
 /**
- * Initalizes Timer1. Used to generate the PWM signal to control the Y axis
+ * Initalizes Timer1. Used to generate the PWM signal to control the X - Y axis
+ * of the camera
  */
 void PWMGenerate::initTimer1() {
     DPRINTLNF("Initializing timer 1");
 
-    this->timer = this->TIMER_1;
-
-    pinMode(this->PIN_OUTPUT_TIMER_1, OUTPUT);
-
     // CS10-CS12 Set the pre-scaler to 1024 (101)
-    // WGM10-WGM13 Set Fast PWM with OC1A controlling top (1111)
-    // COM1A0 = 1; COM1A1 = 0 Toggle OC1A on Compare Match
-    // COM1B0 = 0; COM1B1 = 1 Clear OC1B on Compare Match
-    // OC1A corresponds to pin 9
-    // OC1B corresponds to pin 10
-    TCCR1A = _BV(COM1B1) | _BV(COM1A0) | _BV(WGM11) | _BV(WGM10);
+    // WGM10-WGM13 Set Fast PWM with ICR1 controlling top (0111)
+    TCCR1A &= ~_BV(WGM10);
+    TCCR1A |= _BV(WGM11);
     TCCR1B = _BV(CS12) | _BV(CS10) | _BV(WGM13) | _BV(WGM12);
-    OCR1A = this->TOP;
-    OCR1B = this->compare;
+    ICR1 = this->TOP;
+    DPRINTLN(TCCR1A);
 }
 
 /**
@@ -40,10 +58,6 @@ void PWMGenerate::initTimer1() {
  */
 void PWMGenerate::initTimer2() {
     DPRINTLNF("Initializing timer 2");
-
-    this->timer = this->TIMER_2;
-
-    pinMode(this->PIN_OUTPUT_TIMER_2, OUTPUT);
 
     // CS20-CS22 Set the pre-scaler to 1024 (111)
     // WGM20-WGM22 Set Fast PWM with OC2A controlling top (111)
@@ -70,9 +84,13 @@ void PWMGenerate::setPosition(int position) {
  * Update compare register
  */
 void PWMGenerate::updateCompare() {
-    if (this->timer == this->TIMER_1) {
+    if (this->pin == this->PIN_OUTPUT_TIMER_1_1) {
+        OCR1A = this->compare;
+    } else if (this->pin == this->PIN_OUTPUT_TIMER_1_2) {
         OCR1B = this->compare;
-    } else if (this->timer == this->TIMER_2) {
-        OCR2B = this->compare;
+    } else if (this->pin == this->PIN_OUTPUT_TIMER_2_1) {
+
+    } else if (this->pin == this->PIN_OUTPUT_TIMER_2_2) {
+
     }
 }

@@ -41,6 +41,9 @@ void Camera::setup() {
 
     this->outputX = new PWMGenerate(PWM_PIN_OUTPUT_X);
     this->outputY = new PWMGenerate(PWM_PIN_OUTPUT_Y);
+
+    // Only initalize once; both pins use Timer1
+    this->outputX->initTimer1();
 }
 
 /**
