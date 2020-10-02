@@ -9,11 +9,15 @@ componentThickness = 5;
 supportThickness = 8;
 supportHoleHeight = 50;
 supportWidth = 50;
-supportTaper = 15;
+supportTaper = 12;
 supportBaseDepth = 15;
 
+supportServoWidth = 12;
+supportServoHeight = 23.5;
+supportServoOffsetTop = 6;
+
 // Support right
-supportRightHoleRadius = 6;
+supportRightHoleRadius = 3;
 
 // Camera mount
 cameraMountGoproWidth = 63;
@@ -44,4 +48,11 @@ frameCameraMountOffsetY = 5;
 frameThickness = componentThickness;
 frameWidth = cameraMountWidth + 2 * frameThickness + 2 * frameCameraMountOffsetX;
 frameHeight = cameraMountHeight + 2 * frameThickness + 2 * frameCameraMountOffsetY;
-frameDepth = 20;
+frameDepth = 30;
+
+frameServoCutoutLeftRadius = 10;
+frameServoCutoutLeftThickness = 1.6;
+
+framePinOffsetRadius = supportRightHoleRadius + 2;
+framePinOffsetHeight = 2;
+framePinRadiusOffset = 0.1;

@@ -16,7 +16,7 @@ $fn = 100;
 // recess for servo arm
 // top pin
 
-supportDistance = 60;
+supportDistance = 53;
 
 // Left support
 translate([-1 * supportDistance, 0, 0])
