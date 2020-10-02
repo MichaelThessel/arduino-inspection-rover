@@ -1,10 +1,13 @@
 include <variables.scad>
 
+use <servo.scad>
+
 // Frame
 module frame() {
     difference() {
         frameBody();
         frameServoCutout();
+        frameHoleTop();
     }
 
     framePinRight();
@@ -34,7 +37,7 @@ module frameBody() {
 module frameServoCutout() {
     translate([DIFFERENCE_FIX_NEGATIVE, frameHeight / 2, frameDepth / 2])
     rotate([0, 90, 0])
-    cylinder(h = frameServoCutoutLeftThickness + DIFFERENCE_FIX_2, r = frameServoCutoutLeftRadius);
+    servoPlateCutout();
 }
 
 // Pin for right support
@@ -45,6 +48,13 @@ module framePinRight() {
         cylinder(h = supportThickness + framePinOffsetHeight, r = supportRightHoleRadius - framePinRadiusOffset);
         cylinder(h = framePinOffsetHeight, r = framePinOffsetRadius);
     }
+}
+
+// Hole in the top for camera mount pin
+module frameHoleTop() {
+    translate([frameWidth / 2, frameHeight - frameThickness - DIFFERENCE_FIX, frameDepth / 2])
+    rotate([0, 90, 90])
+    cylinder(h = frameThickness + DIFFERENCE_FIX_2, r = frameHoleTopRadius);
 }
 
 frame();

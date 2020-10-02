@@ -9,12 +9,16 @@ $fn = 100;
 
 // TODO
 // Supports:
-// Screw holes for mounting
+// Screw holes for mounting (oval)
+//
+// Frame:
+// Add cutout for shutter
+// Add cutout for servo
+// Add printing template with upper 3rd separated
 //
 // Camera mount:
-// mount for lock
-// recess for servo arm
-// top pin
+// Mount for led strip
+// Mount for lock
 
 supportDistance = 53;
 

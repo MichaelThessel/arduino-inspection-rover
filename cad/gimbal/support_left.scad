@@ -1,5 +1,7 @@
 include <variables.scad>
+
 use <support.scad>
+use <servo.scad>
 
 // Left support
 module leftSupport() {
@@ -8,14 +10,12 @@ module leftSupport() {
 
         // Servo cutout
         translate([
-            (supportWidth - supportServoWidth) / 2,
-            supportHoleHeight - supportServoHeight + supportServoOffsetTop,
+            (supportWidth - servoWidth) / 2,
+            supportHoleHeight - servoHeight + servoOffsetTop,
             DIFFERENCE_FIX_NEGATIVE
         ])
-        cube([supportServoWidth, supportServoHeight, supportThickness + DIFFERENCE_FIX_2]);
+        servoCutout();
     }
-
-
 }
 
 leftSupport();

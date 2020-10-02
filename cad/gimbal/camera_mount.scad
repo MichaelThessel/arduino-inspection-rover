@@ -1,5 +1,7 @@
 include <variables.scad>
 
+use <servo.scad>
+
 // Camera mount
 module cameraMount() {
     difference() {
@@ -7,18 +9,19 @@ module cameraMount() {
         cameraMountShutterCutout();
         cameraMountPowerCutout();
         cameraMountBackCutout();
+        cameraMountServoCutout();
     }
+
+    cameraMountPin();
 }
 
 // Camera mount case
 module cameraMountCase() {
     difference() {
-        linear_extrude(height = cameraMountDepth)
-        polygon(points = [[0, 0], [cameraMountWidth , 0], [cameraMountWidth, cameraMountHeight], [0, cameraMountHeight]]);
+        cube([cameraMountWidth, cameraMountHeight, cameraMountDepth]);
 
         translate([cameraMountThickness, cameraMountThickness, cameraMountThickness])
-        linear_extrude(height = cameraMountGoproDepth + DIFFERENCE_FIX)
-        polygon(points = [[0, 0], [cameraMountGoproWidth , 0], [cameraMountGoproWidth, cameraMountGoproHeight], [0, cameraMountGoproHeight]]);
+        cube([cameraMountGoproWidth, cameraMountGoproHeight, cameraMountGoproDepth + DIFFERENCE_FIX]);
     }
 }
 
@@ -63,6 +66,26 @@ module cameraMountBackCutout() {
         cameraMountGoproHeight - cameraMountBackCutoutOffset,
         cameraMountThickness + DIFFERENCE_FIX_2
     ]);
+}
+
+// Pin for frame
+module cameraMountPin() {
+    translate([cameraMountWidth / 2, cameraMountHeight, cameraMountDepth / 2])
+    rotate([270, 0, 0])
+    union() {
+        cylinder(
+            h = frameThickness + cameraMountPinOffsetHeight,
+            r = frameHoleTopRadius - cameraMountPinRadiusOffset
+        );
+        cylinder(h = cameraMountPinOffsetHeight, r = cameraMountPinOffsetRadius);
+    }
+}
+
+// Cutout for servo mounting plate
+module cameraMountServoCutout() {
+    translate([cameraMountWidth / 2, DIFFERENCE_FIX_NEGATIVE, cameraMountDepth / 2])
+    rotate([270, 0 ,0])
+    servoPlateCutout();
 }
 
 cameraMount();

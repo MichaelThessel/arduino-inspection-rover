@@ -12,10 +12,6 @@ supportWidth = 50;
 supportTaper = 12;
 supportBaseDepth = 15;
 
-supportServoWidth = 12;
-supportServoHeight = 23.5;
-supportServoOffsetTop = 6;
-
 // Support right
 supportRightHoleRadius = 3;
 
@@ -42,6 +38,10 @@ cameraMountPowerCutoutGap = componentThickness;
 
 cameraMountBackCutoutOffset = 8;
 
+cameraMountPinOffsetRadius = supportRightHoleRadius + 2;
+cameraMountPinOffsetHeight = 2;
+cameraMountPinRadiusOffset = 0.1;
+
 // Frame
 frameCameraMountOffsetX = 10;
 frameCameraMountOffsetY = 5;
@@ -49,10 +49,18 @@ frameThickness = componentThickness;
 frameWidth = cameraMountWidth + 2 * frameThickness + 2 * frameCameraMountOffsetX;
 frameHeight = cameraMountHeight + 2 * frameThickness + 2 * frameCameraMountOffsetY;
 frameDepth = 30;
+frameHoleTopRadius = supportRightHoleRadius;
 
-frameServoCutoutLeftRadius = 10;
-frameServoCutoutLeftThickness = 1.6;
+framePinOffsetRadius = cameraMountPinOffsetRadius;
+framePinOffsetHeight = cameraMountPinOffsetHeight;
+framePinRadiusOffset = cameraMountPinRadiusOffset;
 
-framePinOffsetRadius = supportRightHoleRadius + 2;
-framePinOffsetHeight = 2;
-framePinRadiusOffset = 0.1;
+// Servo cutout
+servoWidth = 12;
+servoHeight = 23.5;
+servoOffsetTop = 6;
+
+// Servo mounting plate
+servoPlateRadius = 10;
+servoPlateThickness = 1.6;
+
