@@ -77,3 +77,8 @@ frameShutterCutoutOffsetX = 22;
 frameScrewHoleHeight = screwHoleDepth;
 frameScrewHoleRadius = screwHoleRadius;
 frameScrewHoleOffsetZ = 3;
+
+// Lock
+lockHeight = 20;
+lockThickness = 2;
+lockWidth = frameThickness;
