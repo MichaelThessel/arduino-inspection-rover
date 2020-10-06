@@ -10,6 +10,10 @@ module frame() {
         frameHoleTop();
         frameShutterCutout();
         frameServoCutout();
+        frameScrewHole(frameThickness / 2, frameScrewHoleOffsetZ);
+        frameScrewHole(frameThickness / 2, frameDepth - frameScrewHoleOffsetZ);
+        frameScrewHole(frameWidth - frameThickness / 2, frameScrewHoleOffsetZ);
+        frameScrewHole(frameWidth - frameThickness / 2, frameDepth - frameScrewHoleOffsetZ);
     }
 
     framePinRight();
@@ -70,11 +74,18 @@ module frameHoleTop() {
     cylinder(h = frameThickness + DIFFERENCE_FIX_2, r = frameHoleTopRadius);
 }
 
-// Cutout for shitter
+// Cutout for shutter
 module frameShutterCutout() {
     translate([frameShutterCutoutOffsetX, frameHeight + DIFFERENCE_FIX, frameDepth - frameShutterCutoutHeight + DIFFERENCE_FIX])
     rotate([90, 0, 0])
     cube([frameShutterCutoutWidth, frameShutterCutoutHeight + DIFFERENCE_FIX_2, frameThickness + DIFFERENCE_FIX_2]);
+}
+
+// Screw hole for top part of frame
+module frameScrewHole(offsetX, offsetZ) {
+    translate([offsetX, frameHeight + DIFFERENCE_FIX, offsetZ])
+    rotate([90, 0, 0])
+    cylinder(h = frameScrewHoleHeight + DIFFERENCE_FIX, r = frameScrewHoleRadius);
 }
 
 frame();

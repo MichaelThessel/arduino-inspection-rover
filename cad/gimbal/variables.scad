@@ -68,3 +68,7 @@ frameHoleTopRadius = supportRightHoleRadius;
 frameShutterCutoutWidth = 25;
 frameShutterCutoutHeight = 18;
 frameShutterCutoutOffsetX = 22;
+
+frameScrewHoleHeight = 20;
+frameScrewHoleRadius = 1;
+frameScrewHoleOffsetZ = 3;

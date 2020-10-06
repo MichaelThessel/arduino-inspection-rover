@@ -8,9 +8,6 @@ use <frame.scad>
 $fn = 100;
 
 // TODO
-// Frame:
-// Add printing template with top separated
-//
 // Camera mount:
 // Mount for led strip
 // Mount for lock
