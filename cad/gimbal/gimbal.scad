@@ -7,10 +7,6 @@ use <frame.scad>
 
 $fn = 100;
 
-// TODO
-// Camera mount:
-// Mount for lock
-
 supportDistance = 53;
 
 // Left support

@@ -10,10 +10,9 @@ module cameraMount() {
         cameraMountPowerCutout();
         cameraMountBackCutout();
         cameraMountServoCutout();
-        translate([cameraMountThickness, 0, cameraMountDepth - cameraMountScrewHoleDepth + DIFFERENCE_FIX])
-        cameraMountLEDMountHole();
-        translate([cameraMountWidth - cameraMountThickness, 0, cameraMountDepth - cameraMountScrewHoleDepth + DIFFERENCE_FIX])
-        cameraMountLEDMountHole();
+        cameraMountLEDMountHole(cameraMountThickness);
+        cameraMountLEDMountHole(cameraMountWidth - cameraMountThickness);
+        cameraMountLockHole();
     }
 
     cameraMountPin();
@@ -104,7 +103,15 @@ module cameraMountLEDMount() {
     cylinder(h = cameraMountDepth, r = cameraMountThickness);
 }
 
-module cameraMountLEDMountHole() {
+// Led mount screw hole
+module cameraMountLEDMountHole(x, y) {
+    translate([x, 0, cameraMountDepth - cameraMountScrewHoleDepth + DIFFERENCE_FIX])
+    cylinder(h = cameraMountScrewHoleDepth + DIFFERENCE_FIX, r = cameraMountScrewHoleRadius);
+}
+
+// Lock screw hole
+module cameraMountLockHole() {
+    translate([cameraMountWidth / 2, cameraMountHeight - cameraMountThickness / 2, cameraMountDepth - cameraMountScrewHoleDepth + DIFFERENCE_FIX])
     cylinder(h = cameraMountScrewHoleDepth + DIFFERENCE_FIX, r = cameraMountScrewHoleRadius);
 }
 
