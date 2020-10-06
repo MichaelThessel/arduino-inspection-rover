@@ -5,6 +5,16 @@ DIFFERENCE_FIX_2 = 2 * DIFFERENCE_FIX;
 
 componentThickness = 5;
 
+// Servo cutout
+servoWidth = 12;
+servoHeight = 23.5;
+servoOffsetTop = 6;
+servoFlangeDistance = 12.5;
+
+// Servo mounting plate
+servoPlateRadius = 10;
+servoPlateThickness = 1.6;
+
 // Support
 supportThickness = 8;
 supportHoleHeight = 50;
@@ -44,28 +54,17 @@ cameraMountPinOffsetHeight = 2;
 cameraMountPinRadiusOffset = 0.1;
 
 // Frame
-frameCameraMountOffsetX = 10;
-frameCameraMountOffsetY = 5;
-frameThickness = componentThickness;
-frameWidth = cameraMountWidth + 2 * frameThickness + 2 * frameCameraMountOffsetX;
-frameHeight = cameraMountHeight + 2 * frameThickness + 2 * frameCameraMountOffsetY;
-frameDepth = 22;
-frameHoleTopRadius = supportRightHoleRadius;
-
 framePinOffsetRadius = cameraMountPinOffsetRadius;
 framePinOffsetHeight = cameraMountPinOffsetHeight;
 framePinRadiusOffset = cameraMountPinRadiusOffset;
 
+frameCameraMountOffsetX = 10;
+frameThickness = componentThickness;
+frameWidth = cameraMountWidth + 2 * frameThickness + 2 * frameCameraMountOffsetX;
+frameHeight = cameraMountHeight + 2 * frameThickness + servoFlangeDistance + framePinOffsetHeight + 1;
+frameDepth = 22;
+frameHoleTopRadius = supportRightHoleRadius;
+
 frameShutterCutoutWidth = 25;
 frameShutterCutoutHeight = 18;
 frameShutterCutoutOffsetX = 22;
-
-// Servo cutout
-servoWidth = 12;
-servoHeight = 23.5;
-servoOffsetTop = 6;
-
-// Servo mounting plate
-servoPlateRadius = 10;
-servoPlateThickness = 1.6;
-
