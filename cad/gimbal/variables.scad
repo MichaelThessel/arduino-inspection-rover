@@ -56,6 +56,10 @@ framePinOffsetRadius = cameraMountPinOffsetRadius;
 framePinOffsetHeight = cameraMountPinOffsetHeight;
 framePinRadiusOffset = cameraMountPinRadiusOffset;
 
+frameShutterCutoutWidth = 25;
+frameShutterCutoutHeight = 25;
+frameShutterCutoutOffsetX = 22;
+
 // Servo cutout
 servoWidth = 12;
 servoHeight = 23.5;

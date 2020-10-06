@@ -9,7 +9,6 @@ $fn = 100;
 
 // TODO
 // Frame:
-// Add cutout for shutter
 // Add cutout for servo
 // Add printing template with upper 3rd separated
 //

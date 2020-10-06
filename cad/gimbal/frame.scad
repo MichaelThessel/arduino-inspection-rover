@@ -8,6 +8,7 @@ module frame() {
         frameBody();
         frameServoCutout();
         frameHoleTop();
+        frameShutterCutout();
     }
 
     framePinRight();
@@ -55,6 +56,13 @@ module frameHoleTop() {
     translate([frameWidth / 2, frameHeight - frameThickness - DIFFERENCE_FIX, frameDepth / 2])
     rotate([0, 90, 90])
     cylinder(h = frameThickness + DIFFERENCE_FIX_2, r = frameHoleTopRadius);
+}
+
+// Cutout for shitter
+module frameShutterCutout() {
+    translate([frameShutterCutoutOffsetX, frameHeight + DIFFERENCE_FIX, frameDepth - frameShutterCutoutHeight + DIFFERENCE_FIX])
+    rotate([90, 0, 0])
+    cube([frameShutterCutoutWidth, frameShutterCutoutHeight + DIFFERENCE_FIX_2, frameThickness + DIFFERENCE_FIX_2]);
 }
 
 frame();
