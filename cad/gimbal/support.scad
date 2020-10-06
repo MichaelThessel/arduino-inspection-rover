@@ -1,7 +1,5 @@
 include <variables.scad>
 
-supportRightHoleRadius = 2;
-
 // Support
 module support() {
     difference() {
@@ -33,10 +31,10 @@ module supportBody() {
 module mountingHole() {
     rotate([90, 0, 0])
     hull() {
-        translate([-supportRightHoleRadius / 2, 0, 0])
-        cylinder(r = supportRightHoleRadius, h = supportThickness + DIFFERENCE_FIX_2);
-        translate([supportRightHoleRadius / 2, 0, 0])
-        cylinder(r = supportRightHoleRadius, h = supportThickness + DIFFERENCE_FIX_2);
+        translate([-supportMountingHoleRadius / 2, 0, 0])
+        cylinder(r = supportMountingHoleRadius, h = supportThickness + DIFFERENCE_FIX_2);
+        translate([supportMountingHoleRadius / 2, 0, 0])
+        cylinder(r = supportMountingHoleRadius, h = supportThickness + DIFFERENCE_FIX_2);
     }
 }
 support();

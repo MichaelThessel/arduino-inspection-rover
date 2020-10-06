@@ -11,6 +11,7 @@ supportHoleHeight = 50;
 supportWidth = 50;
 supportTaper = 12;
 supportBaseDepth = 15;
+supportMountingHoleRadius = 2;
 
 // Support right
 supportRightHoleRadius = 3;
