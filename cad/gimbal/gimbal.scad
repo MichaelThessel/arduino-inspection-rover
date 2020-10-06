@@ -9,8 +9,8 @@ $fn = 100;
 
 // TODO
 // Frame:
-// Add cutout for servo
-// Add printing template with upper 3rd separated
+// Ensure that height is correct
+// Add printing template with top separated
 //
 // Camera mount:
 // Mount for led strip
@@ -40,6 +40,6 @@ cameraMount();
 translate([
     -1 * frameWidth / 2,
     supportHoleHeight - frameHeight / 2,
-    supportWidth / 2 - cameraMountDepth / 2
+    supportWidth / 2 - frameDepth / 2
 ])
 frame();

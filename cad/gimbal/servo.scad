@@ -1,8 +1,8 @@
 include <variables.scad>
 
 // Cutout for servo body
-module servoCutout() {
-    cube([servoWidth, servoHeight, supportThickness + DIFFERENCE_FIX_2]);
+module servoCutout(thickness) {
+    cube([servoWidth, servoHeight, thickness]);
 }
 
 // Cutout for servo mounting plate

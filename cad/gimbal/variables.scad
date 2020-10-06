@@ -49,7 +49,7 @@ frameCameraMountOffsetY = 5;
 frameThickness = componentThickness;
 frameWidth = cameraMountWidth + 2 * frameThickness + 2 * frameCameraMountOffsetX;
 frameHeight = cameraMountHeight + 2 * frameThickness + 2 * frameCameraMountOffsetY;
-frameDepth = 30;
+frameDepth = 22;
 frameHoleTopRadius = supportRightHoleRadius;
 
 framePinOffsetRadius = cameraMountPinOffsetRadius;
@@ -57,7 +57,7 @@ framePinOffsetHeight = cameraMountPinOffsetHeight;
 framePinRadiusOffset = cameraMountPinRadiusOffset;
 
 frameShutterCutoutWidth = 25;
-frameShutterCutoutHeight = 25;
+frameShutterCutoutHeight = 18;
 frameShutterCutoutOffsetX = 22;
 
 // Servo cutout

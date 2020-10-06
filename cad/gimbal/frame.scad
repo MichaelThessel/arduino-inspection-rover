@@ -6,9 +6,10 @@ use <servo.scad>
 module frame() {
     difference() {
         frameBody();
-        frameServoCutout();
+        frameServoPlateCutout();
         frameHoleTop();
         frameShutterCutout();
+        frameServoCutout();
     }
 
     framePinRight();
@@ -35,10 +36,21 @@ module frameBody() {
 }
 
 // Cutout for support servo mounting plate
-module frameServoCutout() {
+module frameServoPlateCutout() {
     translate([DIFFERENCE_FIX_NEGATIVE, frameHeight / 2, frameDepth / 2])
     rotate([0, 90, 0])
     servoPlateCutout();
+}
+
+// Cutout for servo
+module frameServoCutout() {
+    translate([
+        frameWidth / 2 - servoHeight / 2 - servoOffsetTop,
+        DIFFERENCE_FIX_NEGATIVE,
+        frameDepth / 2 - servoWidth / 2
+    ])
+    rotate([270, 270, 0])
+    servoCutout(frameThickness + DIFFERENCE_FIX_2);
 }
 
 // Pin for right support

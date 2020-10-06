@@ -14,7 +14,7 @@ module leftSupport() {
             supportHoleHeight - servoHeight + servoOffsetTop,
             DIFFERENCE_FIX_NEGATIVE
         ])
-        servoCutout();
+        servoCutout(supportThickness + DIFFERENCE_FIX_2);
     }
 }
 
