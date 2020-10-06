@@ -31,7 +31,7 @@ rightSupport();
 // Camera mount
 translate([
     -1 * cameraMountWidth / 2,
-    supportHoleHeight - cameraMountHeight / 2,
+    supportHoleHeight - cameraMountHeight / 2 + 3,
     supportWidth / 2 - cameraMountDepth / 2
 ])
 cameraMount();
