@@ -10,6 +10,10 @@ module cameraMount() {
         cameraMountPowerCutout();
         cameraMountBackCutout();
         cameraMountServoCutout();
+        translate([cameraMountThickness, 0, cameraMountDepth - cameraMountScrewHoleDepth + DIFFERENCE_FIX])
+        cameraMountLEDMountHole();
+        translate([cameraMountWidth - cameraMountThickness, 0, cameraMountDepth - cameraMountScrewHoleDepth + DIFFERENCE_FIX])
+        cameraMountLEDMountHole();
     }
 
     cameraMountPin();
@@ -23,6 +27,12 @@ module cameraMountCase() {
         translate([cameraMountThickness, cameraMountThickness, cameraMountThickness])
         cube([cameraMountGoproWidth, cameraMountGoproHeight, cameraMountGoproDepth + DIFFERENCE_FIX]);
     }
+
+    // LED mount extensions
+    translate([cameraMountThickness, 0, 0])
+    cameraMountLEDMount();
+    translate([cameraMountWidth - cameraMountThickness, 0, 0])
+    cameraMountLEDMount();
 }
 
 // Cutout for shutter
@@ -86,6 +96,16 @@ module cameraMountServoCutout() {
     translate([cameraMountWidth / 2, DIFFERENCE_FIX_NEGATIVE, cameraMountDepth / 2])
     rotate([270, 0 ,0])
     servoPlateCutout();
+}
+
+
+// LED mount
+module cameraMountLEDMount() {
+    cylinder(h = cameraMountDepth, r = cameraMountThickness);
+}
+
+module cameraMountLEDMountHole() {
+    cylinder(h = cameraMountScrewHoleDepth + DIFFERENCE_FIX, r = cameraMountScrewHoleRadius);
 }
 
 cameraMount();

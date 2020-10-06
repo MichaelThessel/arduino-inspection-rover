@@ -4,6 +4,8 @@ DIFFERENCE_FIX_NEGATIVE = -1 * DIFFERENCE_FIX;
 DIFFERENCE_FIX_2 = 2 * DIFFERENCE_FIX;
 
 componentThickness = 5;
+screwHoleRadius = 1;
+screwHoleDepth = 20;
 
 // Servo cutout
 servoWidth = 12;
@@ -53,6 +55,9 @@ cameraMountPinOffsetRadius = supportRightHoleRadius + 2;
 cameraMountPinOffsetHeight = 2;
 cameraMountPinRadiusOffset = 0.1;
 
+cameraMountScrewHoleRadius = screwHoleRadius;
+cameraMountScrewHoleDepth = screwHoleDepth;
+
 // Frame
 framePinOffsetRadius = cameraMountPinOffsetRadius;
 framePinOffsetHeight = cameraMountPinOffsetHeight;
@@ -69,6 +74,6 @@ frameShutterCutoutWidth = 25;
 frameShutterCutoutHeight = 18;
 frameShutterCutoutOffsetX = 22;
 
-frameScrewHoleHeight = 20;
-frameScrewHoleRadius = 1;
+frameScrewHoleHeight = screwHoleDepth;
+frameScrewHoleRadius = screwHoleRadius;
 frameScrewHoleOffsetZ = 3;

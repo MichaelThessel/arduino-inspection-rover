@@ -9,7 +9,6 @@ $fn = 100;
 
 // TODO
 // Camera mount:
-// Mount for led strip
 // Mount for lock
 
 supportDistance = 53;
