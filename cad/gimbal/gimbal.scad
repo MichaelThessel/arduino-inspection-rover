@@ -8,9 +8,6 @@ use <frame.scad>
 $fn = 100;
 
 // TODO
-// Supports:
-// Screw holes for mounting (oval)
-//
 // Frame:
 // Add cutout for shutter
 // Add cutout for servo
