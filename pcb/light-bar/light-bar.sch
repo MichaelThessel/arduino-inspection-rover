@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L power:VCC #PWR0102
+L light-bar-rescue:VCC-power #PWR0102
 U 1 1 5F7FEF21
 P 750 1550
 F 0 "#PWR0102" H 750 1400 50  0001 C CNN
@@ -25,7 +25,7 @@ F 3 "" H 750 1550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:LED_Small D1
+L light-bar-rescue:LED_Small-Device D1
 U 1 1 5F7FF59B
 P 900 1450
 F 0 "D1" V 854 1548 50  0000 L CNN
@@ -36,7 +36,7 @@ F 3 "~" V 900 1450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R1
+L light-bar-rescue:R_Small-Device R1
 U 1 1 5F80069B
 P 900 1150
 F 0 "R1" H 959 1196 50  0000 L CNN
@@ -49,7 +49,7 @@ $EndComp
 Wire Wire Line
 	900  1250 900  1350
 $Comp
-L Device:LED_Small D2
+L light-bar-rescue:LED_Small-Device D2
 U 1 1 5F80428F
 P 1450 1450
 F 0 "D2" V 1404 1548 50  0000 L CNN
@@ -60,7 +60,7 @@ F 3 "~" V 1450 1450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R2
+L light-bar-rescue:R_Small-Device R2
 U 1 1 5F804295
 P 1450 1150
 F 0 "R2" H 1509 1196 50  0000 L CNN
@@ -73,7 +73,7 @@ $EndComp
 Wire Wire Line
 	1450 1250 1450 1350
 $Comp
-L Device:LED_Small D3
+L light-bar-rescue:LED_Small-Device D3
 U 1 1 5F80547C
 P 2000 1450
 F 0 "D3" V 1954 1548 50  0000 L CNN
@@ -84,7 +84,7 @@ F 3 "~" V 2000 1450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R3
+L light-bar-rescue:R_Small-Device R3
 U 1 1 5F805482
 P 2000 1150
 F 0 "R3" H 2059 1196 50  0000 L CNN
@@ -97,7 +97,7 @@ $EndComp
 Wire Wire Line
 	2000 1250 2000 1350
 $Comp
-L Device:LED_Small D4
+L light-bar-rescue:LED_Small-Device D4
 U 1 1 5F80B2EA
 P 2550 1450
 F 0 "D4" V 2504 1548 50  0000 L CNN
@@ -108,7 +108,7 @@ F 3 "~" V 2550 1450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R4
+L light-bar-rescue:R_Small-Device R4
 U 1 1 5F80B2F0
 P 2550 1150
 F 0 "R4" H 2609 1196 50  0000 L CNN
@@ -121,7 +121,7 @@ $EndComp
 Wire Wire Line
 	2550 1250 2550 1350
 $Comp
-L Device:LED_Small D5
+L light-bar-rescue:LED_Small-Device D5
 U 1 1 5F80B2F7
 P 3100 1450
 F 0 "D5" V 3054 1548 50  0000 L CNN
@@ -132,7 +132,7 @@ F 3 "~" V 3100 1450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R5
+L light-bar-rescue:R_Small-Device R5
 U 1 1 5F80B2FD
 P 3100 1150
 F 0 "R5" H 3159 1196 50  0000 L CNN
@@ -145,7 +145,7 @@ $EndComp
 Wire Wire Line
 	3100 1250 3100 1350
 $Comp
-L Device:LED_Small D6
+L light-bar-rescue:LED_Small-Device D6
 U 1 1 5F80B304
 P 3650 1450
 F 0 "D6" V 3604 1548 50  0000 L CNN
@@ -156,7 +156,7 @@ F 3 "~" V 3650 1450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R6
+L light-bar-rescue:R_Small-Device R6
 U 1 1 5F80B30A
 P 3650 1150
 F 0 "R6" H 3709 1196 50  0000 L CNN
@@ -169,7 +169,7 @@ $EndComp
 Wire Wire Line
 	3650 1250 3650 1350
 $Comp
-L Device:LED_Small D7
+L light-bar-rescue:LED_Small-Device D7
 U 1 1 5F81057A
 P 4200 1450
 F 0 "D7" V 4154 1548 50  0000 L CNN
@@ -180,7 +180,7 @@ F 3 "~" V 4200 1450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R7
+L light-bar-rescue:R_Small-Device R7
 U 1 1 5F810580
 P 4200 1150
 F 0 "R7" H 4259 1196 50  0000 L CNN
@@ -193,7 +193,7 @@ $EndComp
 Wire Wire Line
 	4200 1250 4200 1350
 $Comp
-L Device:LED_Small D8
+L light-bar-rescue:LED_Small-Device D8
 U 1 1 5F810587
 P 4750 1450
 F 0 "D8" V 4704 1548 50  0000 L CNN
@@ -204,7 +204,7 @@ F 3 "~" V 4750 1450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R8
+L light-bar-rescue:R_Small-Device R8
 U 1 1 5F81058D
 P 4750 1150
 F 0 "R8" H 4809 1196 50  0000 L CNN
@@ -217,7 +217,7 @@ $EndComp
 Wire Wire Line
 	4750 1250 4750 1350
 $Comp
-L Device:LED_Small D9
+L light-bar-rescue:LED_Small-Device D9
 U 1 1 5F810594
 P 5300 1450
 F 0 "D9" V 5254 1548 50  0000 L CNN
@@ -228,7 +228,7 @@ F 3 "~" V 5300 1450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R9
+L light-bar-rescue:R_Small-Device R9
 U 1 1 5F81059A
 P 5300 1150
 F 0 "R9" H 5359 1196 50  0000 L CNN
@@ -241,7 +241,7 @@ $EndComp
 Wire Wire Line
 	5300 1250 5300 1350
 $Comp
-L Device:LED_Small D10
+L light-bar-rescue:LED_Small-Device D10
 U 1 1 5F8105A1
 P 5850 1450
 F 0 "D10" V 5804 1548 50  0000 L CNN
@@ -252,7 +252,7 @@ F 3 "~" V 5850 1450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R10
+L light-bar-rescue:R_Small-Device R10
 U 1 1 5F8105A7
 P 5850 1150
 F 0 "R10" H 5909 1196 50  0000 L CNN
@@ -323,7 +323,7 @@ Connection ~ 900  1550
 Wire Wire Line
 	750  1050 900  1050
 $Comp
-L power:GND #PWR0101
+L light-bar-rescue:GND-power #PWR0101
 U 1 1 5F7FE936
 P 750 1050
 F 0 "#PWR0101" H 750 900 50  0001 C CNN
@@ -334,7 +334,7 @@ F 3 "" H 750 1050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x02 J?
+L light-bar-rescue:Conn_01x02-Connector_Generic J?
 U 1 1 5F84685C
 P 900 1750
 F 0 "J?" H 980 1742 50  0000 L CNN
