@@ -7,7 +7,11 @@ module frameTop() {
     difference() {
         frame();
 
-        cube([frameWidth + framePinOffsetHeight + supportThickness, frameHeight - frameThickness, frameDepth]);
+        cube([
+            frameWidth + framePinOffsetHeight + supportThickness,
+            frameHeight - frameThickness,
+            frameDepth + frameExtensionDepth
+        ]);
     }
 }
 

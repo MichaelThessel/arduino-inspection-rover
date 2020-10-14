@@ -23,11 +23,16 @@ module frame() {
 module frameBody() {
     difference() {
         // Frame
-        cube([
-            frameWidth,
-            frameHeight,
-            frameDepth
-        ]);
+        union() {
+            cube([
+                frameWidth,
+                frameHeight,
+                frameDepth
+            ]);
+
+            frameExtensionTop();
+            frameExtensionBottom();
+        }
 
         // Frame cutout
         translate([frameThickness, frameThickness, DIFFERENCE_FIX_NEGATIVE])
@@ -37,6 +42,19 @@ module frameBody() {
             frameDepth + DIFFERENCE_FIX_2
         ]);
     }
+}
+
+// Extension for top camera mounting pin
+module frameExtensionTop() {
+    translate([frameWidth / 2 - frameExtensionTopWidth / 2, frameHeight - frameThickness, frameDepth])
+    cube([frameExtensionTopWidth, frameThickness, frameExtensionDepth]);
+}
+
+
+// Extension from servo cutout
+module frameExtensionBottom() {
+    translate([frameWidth / 2 - frameExtensionBottomWidth / 2 - servoOffsetTop, 0, frameDepth])
+    cube([frameExtensionBottomWidth, frameThickness, frameExtensionDepth]);
 }
 
 // Cutout for support servo mounting plate
@@ -51,7 +69,7 @@ module frameServoCutout() {
     translate([
         frameWidth / 2 - servoHeight / 2 - servoOffsetTop,
         DIFFERENCE_FIX_NEGATIVE,
-        frameDepth / 2 - servoWidth / 2
+        frameDepth + frameExtensionDepth / 2 - servoWidth / 2
     ])
     rotate([270, 270, 0])
     servoCutout(frameThickness + DIFFERENCE_FIX_2);
@@ -69,7 +87,7 @@ module framePinRight() {
 
 // Hole in the top for camera mount pin
 module frameHoleTop() {
-    translate([frameWidth / 2, frameHeight - frameThickness - DIFFERENCE_FIX, frameDepth / 2])
+    translate([frameWidth / 2, frameHeight - frameThickness - DIFFERENCE_FIX, frameHoleTopDepth])
     rotate([0, 90, 90])
     cylinder(h = frameThickness + DIFFERENCE_FIX_2, r = frameHoleTopRadius);
 }

@@ -9,7 +9,11 @@ module frameBottom() {
         frame();
 
         translate([0, frameHeight - frameThickness, 0])
-        cube([frameWidth, frameThickness, frameDepth]);
+        cube([
+            frameWidth,
+            frameThickness,
+            frameDepth + frameExtensionDepth
+       ]);
     }
 }
 

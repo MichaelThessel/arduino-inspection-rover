@@ -19,7 +19,7 @@ servoPlateThickness = 1.6;
 
 // Support
 supportThickness = 8;
-supportHoleHeight = 50;
+supportHoleHeight = 65;
 supportWidth = 50;
 supportTaper = 12;
 supportBaseDepth = 15;
@@ -68,7 +68,14 @@ frameThickness = componentThickness;
 frameWidth = cameraMountWidth + 2 * frameThickness + 2 * frameCameraMountOffsetX;
 frameHeight = cameraMountHeight + 2 * frameThickness + servoFlangeDistance + framePinOffsetHeight + 1;
 frameDepth = 22;
+
 frameHoleTopRadius = supportRightHoleRadius;
+
+frameExtensionDepth = servoWidth * 1.5;
+frameExtensionTopWidth = frameHoleTopRadius * 3;
+frameExtensionBottomWidth = servoHeight * 1.5;
+
+frameHoleTopDepth = frameDepth + frameExtensionDepth / 2;
 
 frameShutterCutoutWidth = 25;
 frameShutterCutoutHeight = 18;
