@@ -5,8 +5,6 @@ use <support_right.scad>
 use <camera_mount.scad>
 use <frame.scad>
 
-$fn = 100;
-
 supportDistance = 53;
 
 // Left support

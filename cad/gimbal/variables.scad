@@ -1,10 +1,12 @@
+$fn = 100;
+
 // General
 DIFFERENCE_FIX = 0.1;
 DIFFERENCE_FIX_NEGATIVE = -1 * DIFFERENCE_FIX;
 DIFFERENCE_FIX_2 = 2 * DIFFERENCE_FIX;
 
 componentThickness = 5;
-screwHoleRadius = 1;
+screwHoleRadius = 1.4;
 screwHoleDepth = 20;
 
 // Servo cutout
