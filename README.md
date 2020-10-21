@@ -15,14 +15,6 @@ The car is modified to work with a Futaba R2004GF 2.4GHz 4 channel receiver.
 gimbal. One channel controls the motor speed and the remaining channel controls
 the servo for the steering.
 
-To control the camera gimbal an Arduino Pro mini is used. The 2 servos in the
-gimbal are Hobby King HK 933s.
+The 2 servos in the gimbal are Hobby King HK 933s.
 
-# Firmware
-
-Currently the firmware only controls the camera gimbal.
-
-The reason the gimbal is not controlled directly via the receiver is because
-when releasing the joystick on the remote the camera would return back to
-center. This is not desired. In addition the signal received from the remote is
-rather noisy which translate into undesired movements of the camera.
+![PCB CAD](/assets/final.jpg)
