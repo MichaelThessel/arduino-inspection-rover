@@ -17,4 +17,4 @@ the servo for the steering.
 
 The 2 servos in the gimbal are Hobby King HK 933s.
 
-![PCB CAD](/assets/final.jpg)
+![Gimbal](/assets/gimbal.png)
