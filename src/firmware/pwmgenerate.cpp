@@ -13,21 +13,6 @@ PWMGenerate::PWMGenerate(uint8_t pin) {
         TCCR1A |= _BV(COM1A1);
         OCR1A = this->compare;
 
-    } else if (pin == this->PIN_OUTPUT_TIMER_1_2) {
-
-        // COM1B0 = 1; COM1B1 = 0 Toggle OC1B on Compare Match
-        // OC1B corresponds to pin 10
-        TCCR1A |= _BV(COM1B1);
-        OCR1B = this->compare;
-
-    } else if (pin == this->PIN_OUTPUT_TIMER_2_1) {
-
-        // TODO
-
-    } else if (pin == this->PIN_OUTPUT_TIMER_2_2) {
-
-        // TODO
-
     } else {
         DPRINTLNF("Incorrect pin specified");
         return;
@@ -86,11 +71,5 @@ void PWMGenerate::setPosition(int position) {
 void PWMGenerate::updateCompare() {
     if (this->pin == this->PIN_OUTPUT_TIMER_1_1) {
         OCR1A = this->compare;
-    } else if (this->pin == this->PIN_OUTPUT_TIMER_1_2) {
-        OCR1B = this->compare;
-    } else if (this->pin == this->PIN_OUTPUT_TIMER_2_1) {
-
-    } else if (this->pin == this->PIN_OUTPUT_TIMER_2_2) {
-
     }
 }

@@ -3,10 +3,7 @@
 
 #include "Arduino.h"
 
-extern uint8_t PWM_PIN_OUTPUT_X;
 extern uint8_t PWM_PIN_OUTPUT_Y;
-extern uint8_t PWM_PIN_OUTPUT_L;
-extern uint8_t PWM_PIN_OUTPUT_R;
 
 class PWMGenerate
 {
@@ -16,10 +13,7 @@ class PWMGenerate
         void initTimer2();
         void setPosition(int position);
     private:
-        const uint8_t PIN_OUTPUT_TIMER_1_1 = PWM_PIN_OUTPUT_X;
-        const uint8_t PIN_OUTPUT_TIMER_1_2 = PWM_PIN_OUTPUT_Y;
-        const uint8_t PIN_OUTPUT_TIMER_2_1 = PWM_PIN_OUTPUT_L;
-        const uint8_t PIN_OUTPUT_TIMER_2_2 = PWM_PIN_OUTPUT_R;
+        const uint8_t PIN_OUTPUT_TIMER_1_1 = PWM_PIN_OUTPUT_Y;
 
         // duty = (compare + 1) / (TOP + 1)
         // compare = duty * (TOP + 1) - 1
