@@ -18,3 +18,6 @@ the servo for the steering.
 The 2 servos in the gimbal are Hobby King HK 933s.
 
 ![Gimbal](/assets/gimbal.png)
+
+![Rover (front)](/assets/rover_front.jpg)
+![Rover (top)](/assets/rover_top.jpg)
