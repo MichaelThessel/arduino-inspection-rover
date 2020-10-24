@@ -29,7 +29,7 @@ void Motor::setup() {
     PCICR = _BV(PCIE2) | _BV(PCIE0);
 
     this->outputY = new PWMGenerate(PWM_PIN_OUTPUT_Y);
-    this->outputY->initTimer1();
+    this->outputY->initTimer();
 }
 
 /**

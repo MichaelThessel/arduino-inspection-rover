@@ -9,12 +9,9 @@ class PWMGenerate
 {
     public:
         PWMGenerate(uint8_t pin);
-        void initTimer1();
-        void initTimer2();
+        void initTimer();
         void setPosition(int position);
     private:
-        const uint8_t PIN_OUTPUT_TIMER_1_1 = PWM_PIN_OUTPUT_Y;
-
         // duty = (compare + 1) / (TOP + 1)
         // compare = duty * (TOP + 1) - 1
         // compare of 23 = 11.5% duty cycle
