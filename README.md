@@ -43,7 +43,7 @@ intended use case a slow speed was desired though. Simply being careful with the
 control sticks wasn't really working as the slightest input resulted in
 significant acceleration.
 
-I used an Arfuino Pro Mini to sample the PWM signal from the RC receiver and
+I used an Arduino Pro Mini to sample the PWM signal from the RC receiver and
 then mapped it into a new PWM signal that would drive the motor at a reduced
 speed. This also accounts for the fact that the car normally drives faster when
 going forward than going backward when given the same input. With the custom
