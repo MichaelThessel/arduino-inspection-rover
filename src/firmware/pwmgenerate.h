@@ -12,18 +12,18 @@ class PWMGenerate
         void initTimer();
         void setPosition(int position);
     private:
+        // Top determines the frequency of the PWM signal
+        // Timer 1 is a 16 bit timer (the only one)
+        // top of 54406 = fpwm 73.36Hz
+        // top = (fc / (fpwm * prescaler)) - 1
+        const uint16_t TOP = 27202;
+
         // duty = (compare + 1) / (TOP + 1)
         // compare = duty * (TOP + 1) - 1
-        // compare of 23 = 11.5% duty cycle
-        const uint8_t DEFAULT_COMPARE = 23;
+        // compare of 3127 = 11.5% duty cycle
+        const uint16_t DEFAULT_COMPARE = 3127;
 
-        // Top determines the frequency of the PWM signal
-        // top of 212 = fpwm 73.36Hz
-        // top = (fc / (fpwm * prescaler)) - 1
-        const uint8_t TOP = 212;
-
-        uint8_t pin;
-        uint8_t compare = PWMGenerate::DEFAULT_COMPARE;
+        uint16_t compare = PWMGenerate::DEFAULT_COMPARE;
 
         void updateCompare();
 };

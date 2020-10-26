@@ -48,15 +48,28 @@ void Motor::readInput() {
     DPRINT(py);
     DPRINTLNF("");
 
+    // Pulse width range reciever:
+    // Center = 1500
+    // Top    = 2000
+    // Bottom = 1000
+
+    // Position range:
+    // Total steps = 544
+    // Steps for each direction = 272
+    //
+    // regular mapping
+    // mappingFactor = 500 / 272 = 1.84
+    //
+    // the motor does run faster forward for the same PWM signal; compensate for
+    // that
+    float forwardMappingFactor = 2.4;
+    float backWardMappingFactor = 1.8;
+
     int position = 0;
-    if (py < this->PWM_CENTER_BOUNDARY_MIN - this->PWM_STEP_DELTA) {
-        position = -2;
-    } else if (py < this->PWM_CENTER_BOUNDARY_MIN) {
-        position = -1;
-    } else if (py > this->PWM_CENTER_BOUNDARY_MAX + this->PWM_STEP_DELTA) {
-        position = 2;
-    } else if (py > this->PWM_CENTER_BOUNDARY_MAX) {
-        position = 1;
+    if (py < PWM_CENTER_BOUNDARY_MAX) {
+        position = (int) (1500 - py) / forwardMappingFactor;
+    } else if (py > PWM_CENTER_BOUNDARY_MIN) {
+        position = (int) (1500 - py) / backWardMappingFactor;
     }
 
     DPRINTF("Setting position: ");
