@@ -36,6 +36,9 @@ etched PCB with 0805 LEDs (white) and 0805 resistors (220R).
 The design files for the light bar are in the [pcb/light-bar](pcb/light-bar)
 directory.
 
+The STL files for the gimbal are also available on
+[Thingiverse](https://www.thingiverse.com/thing:4635363).
+
 # Motor control
 
 One of the challenges was that the RC car was meant to go fast.  For the
